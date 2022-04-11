@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
         Dexter.withContext(this)
@@ -68,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         state = true;
                         binding.flashButton.setImageResource(R.drawable.torch_on);
 
-                    } catch (CameraAccessException e) { }
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
 
                 } else {
 
@@ -78,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
                         state = false;
                         binding.flashButton.setImageResource(torch_off);
 
-                    } catch (CameraAccessException e) { }
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
